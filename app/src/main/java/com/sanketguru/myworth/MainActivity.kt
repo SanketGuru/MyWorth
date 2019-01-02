@@ -9,8 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import com.sanketguru.myworth.view.SliderFragent
-import com.sanketguru.myworth.view.folio.PortFolioListFragment
+import com.sanketguru.myworth.view.SliderFragment
 
 class MainActivity : AppCompatActivity(), AppCallBack {
 
@@ -19,7 +18,7 @@ class MainActivity : AppCompatActivity(), AppCallBack {
         setContentView(R.layout.activity_main)
         //   setSupportActionBar(toolbar)
         if (savedInstanceState == null) {
-            addFragment(SliderFragent(), SliderFragent.tagTitle)
+            addFragment(SliderFragment(), SliderFragment.tagTitle)
         }
     }
 
@@ -78,7 +77,7 @@ class MainActivity : AppCompatActivity(), AppCallBack {
         }
 //        val fragList = fragmentManager.fragments
 //        for (af in fragList) {
-//            if (af is SliderFragent) {
+//            if (af is SliderFragment) {
 //            } else {
 //                fragmentManager.popBackStack()
 //            }
@@ -120,16 +119,6 @@ class MainActivity : AppCompatActivity(), AppCallBack {
                     .create().show()
         } else {
             supportFragmentManager.popBackStack()
-           // val ddA = supportFragmentManager.getBackStackEntryAt(entryCount - 1)
-            //  val fraf = supportFragmentManager.fragments.last()
-//            Log.v("Going to",""+ddA.name)
-//            if(fraf is BackListner){
-//                fraf.onBack()
-//            }else
-
-//            if (!ddA.name.equals(PortFolioListFragment.tagTitle)) {
-//                popFragmentAt(ddA.name!!)
-//            }
         }
     }
 }

@@ -19,9 +19,8 @@ import kotlinx.android.synthetic.main.activity_slider.*
 /**
  * Created by sanket.sphere on 01-01-2019.
  */
-class SliderFragent : BaseFragment() {
+class SliderFragment : BaseFragment() {
     override val layout: Int = R.layout.activity_slider
-
 
     lateinit var callBack: AppCallBack
     lateinit var app: MyWorthApp
@@ -63,20 +62,13 @@ class SliderFragent : BaseFragment() {
         override fun getPageTitle(position: Int): CharSequence? = if (position == 0) "Assets" else "Liability"
 
 
-        override fun getItem(position: Int): Fragment {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return if (position == 0) {
-                PortFolioListFragment()
-            } else {
-                LiabilityListFragment()
-            }
-        }
+        override fun getItem(position: Int): Fragment = if (position == 0)
+            PortFolioListFragment()
+        else
+            LiabilityListFragment()
 
-        override fun getCount(): Int {
-            // Show 3 total pages.
-            return 2
-        }
+
+        override fun getCount(): Int = 2
     }
 
     companion object {
