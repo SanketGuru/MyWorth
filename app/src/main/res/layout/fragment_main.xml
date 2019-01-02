@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    android:clickable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".view.liability.AssetListFragment"
+        tools:showIn="@layout/activity_main">
+
+
+        <android.support.design.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:id="@+id/text_folio_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="start"
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:textStyle="bold"
+                        tools:text="FolioName" />
+
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:id="@+id/text_total"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textStyle="bold"
+                        tools:text="Total Amount" />
+                </LinearLayout>
+
+
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/btn_folio_name"
+                    style="?borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center"
+                    android:src="@drawable/ic_edit_action"
+                   />
+            </FrameLayout>
+
+
+        </android.support.design.card.MaterialCardView>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_asset"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="9"
+            tools:listitem="@layout/item_asset" />
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@drawable/ic_add" />
+</FrameLayout>

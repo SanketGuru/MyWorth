@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MyWorth</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="note">Note</string>
+    <string name="value">Value</string>
+    <string name="name">Name</string>
+    <string name="is_it_a_loan">Is it a Loan?</string>
+    <string name="no_emi">No of EMI</string>
+    <string name="assets">Assets</string>
+    <string name="exit_app_msg">Exit ?</string>
+</resources>
