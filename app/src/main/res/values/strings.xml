@@ -11,4 +11,9 @@
     <string name="no_emi">No of EMI</string>
     <string name="assets">Assets</string>
     <string name="exit_app_msg">Exit ?</string>
+    <string name="asset">Asset</string>
+    <string name="edit">Edit</string>
+    <string name="liability">Liability</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
 </resources>

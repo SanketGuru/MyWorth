@@ -95,20 +95,17 @@ class AddEditAssetFragment : BaseFragment() {
                     value = if (value.length < 1) 0.0 else value.toDouble(),
                     portFolioId = folioId)
             val appData = activity!!.application as MyWorthApp
-            val thread = Thread(object : Runnable {
-                override fun run() {
-                    if (editMode) {
-                        appData.db.assetDao().update(asset)
-                    } else {
-                        appData.db.assetDao().insertAll(asset)
-                    }
-                    activity!!.runOnUiThread {
-                        val imm = context!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
-//Hide:
-                        imm!!.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
-                        callBack.popFragmentAt(tagTitle)
-                    }
-
+            val thread = Thread(Runnable {
+                if (editMode) {
+                    appData.db.assetDao().update(asset)
+                } else {
+                    appData.db.assetDao().insertAll(asset)
+                }
+                activity!!.runOnUiThread {
+                    val imm = context!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
+                    //Hide:
+                    imm!!.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
+                    callBack.popFragmentAt(tagTitle)
                 }
             })
             thread.start()
@@ -121,7 +118,7 @@ class AddEditAssetFragment : BaseFragment() {
         val asset = Asset(if (editMode) mParam1!!.uid else 0,
                 edit_name.text.toString().trim(),
                 edit_desc.text.toString().trim(),
-                value = if (value.length < 1) 0.0 else value.toDouble(),
+                value = if (value.isEmpty()) 0.0 else value.toDouble(),
                 portFolioId = folioId)
         val appData = activity!!.application as MyWorthApp
         val thread = Thread(Runnable {
@@ -129,7 +126,7 @@ class AddEditAssetFragment : BaseFragment() {
                 appData.db.assetDao().delete(asset)
             }
             activity!!.runOnUiThread {
-                callBack.popFragmentAt(ViewAssetFragment.tagTitle)
+                callBack.goHome()
             }
         })
         thread.start()

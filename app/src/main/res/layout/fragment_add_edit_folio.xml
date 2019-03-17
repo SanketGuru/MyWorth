@@ -1,62 +1,86 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light"
-    android:clickable="true"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@android:color/background_light">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceLarge"
-        tools:text="FolioName" />
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/name">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/edit_name"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_big">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:inputType="textCapCharacters"
-            android:maxLength="100"
-            android:maxLines="1" />
-    </android.support.design.widget.TextInputLayout>
+            android:gravity="center"
+            android:orientation="horizontal">
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/note"
-        app:counterEnabled="true"
-        app:counterMaxLength="200">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="Folio"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textStyle="bold" />
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/edit_desc"
+            <ImageButton
+                android:id="@+id/btn_delete"
+                style="?android:borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/delete"
+                android:src="@android:drawable/ic_menu_delete" />
+
+        </LinearLayout>
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:inputType="textMultiLine"
-            android:maxLength="200"
-            android:scrollbarSize="4dp"
-            android:scrollbarStyle="insideOverlay"
-            android:scrollbars="vertical" />
-    </android.support.design.widget.TextInputLayout>
+            android:textAppearance="?android:textAppearanceMedium"
+            tools:text="FolioName" />
 
-    <Button
-        android:id="@+id/btn_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save" />
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name">
 
-    <Button
-        android:id="@+id/btn_delete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Delete" />
-</LinearLayout>
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:inputType="textCapCharacters"
+                android:maxLength="100"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/note"
+            app:counterEnabled="true"
+            app:counterMaxLength="200">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:inputType="textMultiLine"
+                android:maxLength="200"
+                android:scrollbarSize="4dp"
+                android:scrollbarStyle="insideOverlay"
+                android:scrollbars="vertical" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save" />
+
+
+    </LinearLayout>
+</ScrollView>

@@ -38,7 +38,6 @@ class ViewAssetFragment : BaseFragment() {
         btn_edit.onClick {
             val param = mParam1
             if (param != null) {
-
                 callBack.replaceFragment(AddEditAssetFragment.newInstance(param, param.portFolioId),AddEditAssetFragment.tagTitle)
             }
 
