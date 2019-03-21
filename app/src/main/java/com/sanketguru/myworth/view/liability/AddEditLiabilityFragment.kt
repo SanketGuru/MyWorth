@@ -43,6 +43,7 @@ class AddEditLiabilityFragment : BaseFragment() {
             } else {
                 text_value.visibility = View.GONE
                 il_noemi.visibility = View.GONE
+                edit_emino.setText("1")
             }
         }
         btn_save.onClick { saveLiability() }
@@ -52,9 +53,9 @@ class AddEditLiabilityFragment : BaseFragment() {
                 edit_name.setText(data.name)
                 edit_desc.setText(data.desc)
                 edit_value.setText(data.emi.toString())
-                sw_emi.isChecked=data.isEmi()
+                sw_emi.isChecked = data.isEmi()
                 edit_emino.setText(data.noOfEmi.toString())
-                sw_enable.isChecked=data.calculateInGrand
+                sw_enable.isChecked = data.calculateInGrand
             }
 
         }
@@ -78,10 +79,11 @@ class AddEditLiabilityFragment : BaseFragment() {
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        if(context is AppCallBack){
+        if (context is AppCallBack) {
             callBack = context
         }
     }
+
     private fun isValid(): Boolean = when {
         edit_name.text.isNullOrBlank() -> false
         edit_value.text.isNullOrBlank() -> false
@@ -116,7 +118,7 @@ class AddEditLiabilityFragment : BaseFragment() {
                     val imm = context!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
                     //Hide:
                     imm!!.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
-                       callBack.popFragmentAt(tagTitle)
+                    callBack.popFragmentAt(tagTitle)
                 }
             })
             thread.start()
