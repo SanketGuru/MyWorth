@@ -26,7 +26,7 @@ class LiabilityAdapter constructor(likeList: MutableList<Liability>) : AbstractA
         } else {
             text_emi.visibility = View.GONE
         }
-        text_value.text = "${numberFormater.format(item.value())} Rs."
+        text_value.text = "₹ ${numberFormater.format(item.value())}"
         text_percent.text = "${"%.2f".format(getPercent(item.value()))} %"
     }
 

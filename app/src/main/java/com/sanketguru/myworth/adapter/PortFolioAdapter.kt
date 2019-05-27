@@ -20,7 +20,7 @@ class PortFolioAdapter constructor(likeList: MutableList<PortFolioValue>) : Abst
         } else {
             text_desc.visibility = View.GONE
         }
-        text_value.text = "${numberFormater.format(item.value)} Rs."
+        text_value.text = "₹ ${numberFormater.format(item.value)}"
         text_percent.text = "${"%.2f".format(getPercent(item.value))} %"
     }
 

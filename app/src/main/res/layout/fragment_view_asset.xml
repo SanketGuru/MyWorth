@@ -23,14 +23,14 @@
             android:textAppearance="?android:textAppearanceLarge"
             android:textStyle="bold" />
 
-        <ImageButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_edit"
-            style="?android:borderlessButtonStyle"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:contentDescription="@string/edit"
-            android:src="@android:drawable/ic_menu_edit" />
+            android:text="@string/edit"
+         />
 
     </LinearLayout>
 
