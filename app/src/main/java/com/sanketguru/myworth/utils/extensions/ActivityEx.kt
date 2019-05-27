@@ -3,7 +3,7 @@ package com.sanketguru.myworth.utils.extensions
 import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 
 /**
  * Created by Sanket on 19.09.2017.

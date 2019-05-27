@@ -2,7 +2,7 @@ package com.sanketguru.myworth.view.liability
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import com.sanketguru.myworth.AppCallBack
 import com.sanketguru.myworth.MyWorthApp
@@ -21,7 +21,7 @@ import java.text.NumberFormat
 class LiabilityListFragment : BaseFragment() {
     override val layout: Int = R.layout.fragment_portfolio_list
     private var assetAdapter = LiabilityAdapter(mutableListOf<Liability>())
-    private val mLayoutManager = LinearLayoutManager(activity)
+    private val mLayoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity)
     lateinit var callBack: AppCallBack
     lateinit var app: MyWorthApp
     private val numberFormater = NumberFormat.getNumberInstance()

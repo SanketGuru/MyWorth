@@ -2,7 +2,7 @@ package com.sanketguru.myworth.view.folio
 
 import android.app.Activity
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.sanketguru.myworth.AppCallBack

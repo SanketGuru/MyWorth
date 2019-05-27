@@ -1,7 +1,7 @@
 package com.sanketguru.myworth.view.asset
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import com.sanketguru.myworth.AppCallBack
 import com.sanketguru.myworth.MyWorthApp
@@ -23,7 +23,7 @@ class AssetListFragment : BaseFragment() {
 
 
     var assetAdapter = AssetAdapter(mutableListOf<Asset>())
-    private val mLayoutManager = LinearLayoutManager(activity)
+    private val mLayoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity)
     lateinit var callBack: AppCallBack
     override val layout: Int = R.layout.fragment_main
     private val numberFormater = NumberFormat.getNumberInstance()

@@ -3,8 +3,8 @@ package com.sanketguru.myworth.utils.extensions
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Parcelable
-import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.core.content.ContextCompat
 import java.io.Serializable
 
 /**
@@ -34,6 +34,6 @@ import java.io.Serializable
 //
 //}
 
-fun Fragment.isPortrait() = resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
+fun androidx.fragment.app.Fragment.isPortrait() = resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
 //infix fun Fragment.takeColor(colorId: Int) = ContextCompat.getColor(context, colorId)

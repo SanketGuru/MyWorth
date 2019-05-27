@@ -2,10 +2,10 @@ package com.sanketguru.myworth
 
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), AppCallBack {
         }
     }
 
-    override fun addFragment(fragment: Fragment, tag: String) {
+    override fun addFragment(fragment: androidx.fragment.app.Fragment, tag: String) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.add(R.id.fragment, fragment)
@@ -46,14 +46,14 @@ class MainActivity : AppCompatActivity(), AppCallBack {
         fragmentTransaction.commit()
     }
 
-    override fun removeFragment(fragment: Fragment) {
+    override fun removeFragment(fragment: androidx.fragment.app.Fragment) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.remove(fragment)
         fragmentTransaction.commit()
     }
 
-    override fun replaceFragment(fragment: Fragment, tag: String) {
+    override fun replaceFragment(fragment: androidx.fragment.app.Fragment, tag: String) {
 
         val fragmentManager = supportFragmentManager
         fragmentManager.popBackStack()
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity(), AppCallBack {
     }
 
     override fun popFragmentAt(name: String) {
-        supportFragmentManager.popBackStack(name, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        supportFragmentManager.popBackStack(name, androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE)
     }
 
     override fun goHome() {
@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity(), AppCallBack {
         }
     }
 
-    override fun goTo(fragment: Class<Fragment>) {
+    override fun goTo(fragment: Class<androidx.fragment.app.Fragment>) {
         val fragmentManager = supportFragmentManager
         val fragList = fragmentManager.fragments
 
@@ -124,10 +124,10 @@ class MainActivity : AppCompatActivity(), AppCallBack {
 }
 
 interface AppCallBack {
-    fun addFragment(fragment: Fragment, tag: String = "b")
-    fun removeFragment(fragment: Fragment)
-    fun replaceFragment(fragment: Fragment, tag: String = "b")
+    fun addFragment(fragment: androidx.fragment.app.Fragment, tag: String = "b")
+    fun removeFragment(fragment: androidx.fragment.app.Fragment)
+    fun replaceFragment(fragment: androidx.fragment.app.Fragment, tag: String = "b")
     fun popFragmentAt(string: String)
     fun goHome()
-    fun goTo(fragment: Class<Fragment>)
+    fun goTo(fragment: Class<androidx.fragment.app.Fragment>)
 }

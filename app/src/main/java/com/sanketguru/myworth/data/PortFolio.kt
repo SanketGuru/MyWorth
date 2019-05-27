@@ -1,6 +1,6 @@
 package com.sanketguru.myworth.data
 
-import android.arch.persistence.room.*
+import androidx.room.*
 import android.nfc.tech.NfcA
 import android.os.Parcel
 import android.os.Parcelable

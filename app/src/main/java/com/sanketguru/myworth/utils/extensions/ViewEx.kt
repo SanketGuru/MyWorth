@@ -3,8 +3,8 @@ package com.sanketguru.myworth.utils.extensions
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.graphics.PorterDuff
-import android.support.annotation.Px
-import android.support.v4.content.ContextCompat
+import androidx.annotation.Px
+import androidx.core.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

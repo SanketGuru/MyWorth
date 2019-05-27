@@ -1,9 +1,7 @@
 package com.sanketguru.myworth.view
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentPagerAdapter
 import android.view.View
 import com.sanketguru.myworth.AppCallBack
 import com.sanketguru.myworth.MyWorthApp
@@ -58,11 +56,11 @@ class SliderFragment : BaseFragment() {
      * A [FragmentPagerAdapter] that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+    inner class SectionsPagerAdapter(fm: androidx.fragment.app.FragmentManager) : androidx.fragment.app.FragmentPagerAdapter(fm) {
         override fun getPageTitle(position: Int): CharSequence? = if (position == 0) "Assets" else "Liability"
 
 
-        override fun getItem(position: Int): Fragment = if (position == 0)
+        override fun getItem(position: Int): androidx.fragment.app.Fragment = if (position == 0)
             PortFolioListFragment()
         else
             LiabilityListFragment()

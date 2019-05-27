@@ -1,7 +1,7 @@
 package com.sanketguru.myworth.data
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
+import androidx.room.Database
+import androidx.room.RoomDatabase
 
 /**
  * Created by sanket.sphere on 12-12-2018.

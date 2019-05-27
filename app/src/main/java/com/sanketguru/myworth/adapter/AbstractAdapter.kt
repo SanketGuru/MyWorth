@@ -5,8 +5,8 @@ package com.sanketguru.myworth.adapter
  * Created by Sanket Gurav on 1/5/2018.
  */
 
-import android.support.v7.util.DiffUtil
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.sanketguru.myworth.utils.extensions.inflate
@@ -14,7 +14,7 @@ import com.sanketguru.myworth.utils.extensions.inflate
 
 abstract class AbstractAdapter<ITEM> constructor(protected var itemList: MutableList<ITEM>,
                                                  private val layoutResId: Int)
-    : RecyclerView.Adapter<AbstractAdapter.Holder>() {
+    : androidx.recyclerview.widget.RecyclerView.Adapter<AbstractAdapter.Holder>() {
 
     override fun getItemCount() = itemList.size
 
@@ -24,7 +24,7 @@ abstract class AbstractAdapter<ITEM> constructor(protected var itemList: Mutable
         val itemView = viewHolder.itemView
         itemView.setOnClickListener {
             val adapterPosition = viewHolder.adapterPosition
-            if (adapterPosition != RecyclerView.NO_POSITION) {
+            if (adapterPosition != androidx.recyclerview.widget.RecyclerView.NO_POSITION) {
                 onItemClick(itemView, adapterPosition)
             }
         }
@@ -76,5 +76,5 @@ abstract class AbstractAdapter<ITEM> constructor(protected var itemList: Mutable
     protected open fun View.bind( position: Int,item: ITEM) {
     }
 
-    class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class Holder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView)
 }

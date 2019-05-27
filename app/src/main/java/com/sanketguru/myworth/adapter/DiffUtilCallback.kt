@@ -1,6 +1,6 @@
 package com.sanketguru.myworth.adapter
 
-import android.support.v7.util.DiffUtil
+import androidx.recyclerview.widget.DiffUtil
 
 /**
  * Created by Sanket Gurav on 1/5/2018.

@@ -5,8 +5,8 @@ import android.annotation.TargetApi
 import android.content.Context
 import android.os.Build
 import android.os.Handler
-import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.core.content.ContextCompat
 import android.text.Html
 import android.text.Spanned
 import android.widget.Toast
@@ -20,7 +20,7 @@ infix fun Context.takeColor(colorId: Int) = ContextCompat.getColor(this, colorId
 
 operator fun Context.get(resId: Int): String = getString(resId)
 
-operator fun Fragment.get(resId: Int): String = getString(resId)
+operator fun androidx.fragment.app.Fragment.get(resId: Int): String = getString(resId)
 
 
 //fun Int.text(): String = NotesApp.instance.getString(this) //What do you think about it?
