@@ -1,8 +1,9 @@
 package com.sanketguru.myworth.view
 
 import android.os.Bundle
-import androidx.fragment.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentPagerAdapter as FragAdapter
 import android.view.View
+import androidx.fragment.app.FragmentManager
 import com.sanketguru.myworth.AppCallBack
 import com.sanketguru.myworth.MyWorthApp
 import com.sanketguru.myworth.R
@@ -45,10 +46,15 @@ class SliderFragment : BaseFragment() {
         fab.onClick {
             if (tab.selectedTabPosition == 0) {
                 callBack.addFragment(AddEditFolioFragment(), AddEditFolioFragment.tagTitle)
+
+
             } else {
                 callBack.addFragment(AddEditLiabilityFragment(), AddEditLiabilityFragment.tagTitle)
             }
         }
+
+       // toolbar.title="Balance"
+
 
     }
 
@@ -56,7 +62,7 @@ class SliderFragment : BaseFragment() {
      * A [FragmentPagerAdapter] that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    inner class SectionsPagerAdapter(fm: androidx.fragment.app.FragmentManager) : androidx.fragment.app.FragmentPagerAdapter(fm) {
+    inner class SectionsPagerAdapter(fm: FragmentManager) :FragAdapter(fm,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
         override fun getPageTitle(position: Int): CharSequence? = if (position == 0) "Assets" else "Liability"
 
 

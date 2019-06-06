@@ -1,11 +1,10 @@
 package com.sanketguru.myworth.view.liability
 
 import android.app.Activity
-import android.content.Context
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.sanketguru.myworth.AppCallBack
 import com.sanketguru.myworth.MyWorthApp
 import com.sanketguru.myworth.R
@@ -63,7 +62,7 @@ class AddEditLiabilityFragment : BaseFragment() {
             btn_delete.onClick {
                 val con = context
                 if (con != null) {
-                    val buld = AlertDialog.Builder(con)
+                    val buld = MaterialAlertDialogBuilder(con)
                     buld.setTitle(R.string.app_name)
                             .setMessage("Delete ${mParam1!!.name}")
                             .setPositiveButton(android.R.string.ok) { dialog, which -> deleteLiability() }
@@ -77,12 +76,12 @@ class AddEditLiabilityFragment : BaseFragment() {
         }
     }
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        if (context is AppCallBack) {
-            callBack = context
-        }
-    }
+//    override fun onAttach(context: Context?) {
+//        super.onAttach(context)
+//        if (context is AppCallBack) {
+//            callBack = context
+//        }
+//    }
 
     private fun isValid(): Boolean = when {
         edit_name.text.isNullOrBlank() -> false

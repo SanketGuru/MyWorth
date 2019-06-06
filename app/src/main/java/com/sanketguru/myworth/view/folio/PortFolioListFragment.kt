@@ -22,7 +22,7 @@ import java.text.NumberFormat
 class PortFolioListFragment : BaseFragment() {
     override val layout: Int = R.layout.fragment_portfolio_list
     private var assetAdapter = PortFolioAdapter(mutableListOf<PortFolioValue>())
-    private val mLayoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity)
+    private val mLayoutManager = LinearLayoutManager(activity)
     lateinit var callBack: AppCallBack
     lateinit var app: MyWorthApp
     private  val numberFormater= NumberFormat.getNumberInstance()

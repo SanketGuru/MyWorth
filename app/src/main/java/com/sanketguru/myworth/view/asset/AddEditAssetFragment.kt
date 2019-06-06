@@ -1,13 +1,12 @@
 package com.sanketguru.myworth.view.asset
 
 import android.app.Activity
-import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.appcompat.app.AlertDialog
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.sanketguru.myworth.AppCallBack
 import com.sanketguru.myworth.MyWorthApp
 import com.sanketguru.myworth.R
@@ -64,8 +63,8 @@ class AddEditAssetFragment : BaseFragment() {
             btn_delete.onClick {
                 val con = context
                 if (con != null) {
-                    val buld = AlertDialog.Builder(con)
-                    buld.setTitle(R.string.app_name)
+                    val alertDialogBuilder = MaterialAlertDialogBuilder(con)
+                    alertDialogBuilder.setTitle(R.string.app_name)
                             .setMessage("Delete ${mParam1!!.name}")
                             .setPositiveButton(android.R.string.ok) { dialog, which -> deleteAsset() }
                             .create().show()
@@ -134,14 +133,14 @@ class AddEditAssetFragment : BaseFragment() {
     }
 
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        if (context is AppCallBack) {
-            callBack = context
-        } else {
-            //    throw RuntimeException(context!!.toString() + " must implement OnFragmentInteractionListener")
-        }
-    }
+//    override fun onAttach(context: Context?) {
+//        super.onAttach(context)
+//        if (context is AppCallBack) {
+//            callBack = context
+//        } else {
+//            //    throw RuntimeException(context!!.toString() + " must implement OnFragmentInteractionListener")
+//        }
+//    }
 
 //    override fun onDetach() {
 //        super.onDetach()

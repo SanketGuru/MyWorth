@@ -1,22 +1,31 @@
 package com.sanketguru.myworth
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.PersistableBundle
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.sanketguru.myworth.view.SliderFragment
 
+//Dark Theme
+//https://proandroiddev.com/android-dark-theme-implementation-recap-4fcffb0c4bff
+//https://medium.com/mindorks/mastering-android-themes-chapter-4-591e03320182
 class MainActivity : AppCompatActivity(), AppCallBack {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //   setSupportActionBar(toolbar)
+
+        // setTheme(R.style.Theme_Dark);
+
+
+      //  setTheme(com.google.android.material.R.style.Dark)
+
+
         if (savedInstanceState == null) {
             addFragment(SliderFragment(), SliderFragment.tagTitle)
         }
@@ -33,11 +42,32 @@ class MainActivity : AppCompatActivity(), AppCallBack {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_settings -> {
+
+             //   AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+               // recreate()
+
+
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
+    override fun onConfigurationChanged(configuration: Configuration) {
+        super.onConfigurationChanged(configuration)
+
+        val currentNightMode = configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        when (currentNightMode) {
+            Configuration.UI_MODE_NIGHT_NO -> {
+                Log.v("Say", "Light")
+
+            } // Night mode is not active, we're using the light theme
+            Configuration.UI_MODE_NIGHT_YES -> {
+                Log.v("Say", "Dark")
+            } // Night mode is active, we're using dark theme
+        }
+    }
     override fun addFragment(fragment: androidx.fragment.app.Fragment, tag: String) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
@@ -70,8 +100,8 @@ class MainActivity : AppCompatActivity(), AppCallBack {
 
     override fun goHome() {
         val fragmentManager = supportFragmentManager
-        var dd=fragmentManager.backStackEntryCount
-        while (dd>=2){
+        var dd = fragmentManager.backStackEntryCount
+        while (dd >= 2) {
             fragmentManager.popBackStack()
             dd--
         }
@@ -113,7 +143,7 @@ class MainActivity : AppCompatActivity(), AppCallBack {
         val entryCount = supportFragmentManager.backStackEntryCount
         if (entryCount <= 1) {
             //getOut of app
-            val builder = AlertDialog.Builder(this)
+            val builder = MaterialAlertDialogBuilder(this)
             builder.setMessage(getString(R.string.exit_app_msg))
                     .setPositiveButton(android.R.string.yes) { dialog, which -> finish() }
                     .create().show()
@@ -127,7 +157,7 @@ interface AppCallBack {
     fun addFragment(fragment: androidx.fragment.app.Fragment, tag: String = "b")
     fun removeFragment(fragment: androidx.fragment.app.Fragment)
     fun replaceFragment(fragment: androidx.fragment.app.Fragment, tag: String = "b")
-    fun popFragmentAt(string: String)
+    fun popFragmentAt(name: String)
     fun goHome()
     fun goTo(fragment: Class<androidx.fragment.app.Fragment>)
 }

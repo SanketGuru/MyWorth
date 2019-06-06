@@ -2,9 +2,9 @@ package com.sanketguru.myworth.view.folio
 
 import android.app.Activity
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.sanketguru.myworth.AppCallBack
 import com.sanketguru.myworth.BackListner
 import com.sanketguru.myworth.MyWorthApp
@@ -12,7 +12,6 @@ import com.sanketguru.myworth.R
 import com.sanketguru.myworth.data.PortFolio
 import com.sanketguru.myworth.utils.extensions.onClick
 import com.sanketguru.myworth.view.BaseFragment
-import com.sanketguru.myworth.view.asset.AssetListFragment
 import kotlinx.android.synthetic.main.fragment_add_edit_folio.*
 
 /**
@@ -51,8 +50,8 @@ class AddEditFolioFragment : BaseFragment(), BackListner {
             btn_delete.onClick {
                 val con = context
                 if (con != null) {
-                    val buld = AlertDialog.Builder(con)
-                    buld.setTitle(R.string.app_name)
+                    val alertBuilder = MaterialAlertDialogBuilder(con)
+                    alertBuilder.setTitle(R.string.app_name)
                             .setMessage("Delete ${mParam1!!.name}")
                             .setPositiveButton(android.R.string.ok) { dialog, which -> deleteFolio() }
                             .create().show()
