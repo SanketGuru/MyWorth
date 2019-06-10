@@ -1,6 +1,7 @@
 package com.sanketguru.myworth.view.liability
 
 import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -76,12 +77,12 @@ class AddEditLiabilityFragment : BaseFragment() {
         }
     }
 
-//    override fun onAttach(context: Context?) {
-//        super.onAttach(context)
-//        if (context is AppCallBack) {
-//            callBack = context
-//        }
-//    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is AppCallBack) {
+            callBack = context
+        }
+    }
 
     private fun isValid(): Boolean = when {
         edit_name.text.isNullOrBlank() -> false
