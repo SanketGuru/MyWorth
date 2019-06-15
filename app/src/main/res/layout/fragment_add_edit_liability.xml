@@ -53,7 +53,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
-            android:hint="@string/name">
+            android:hint="@string/name"
+            app:hintTextAppearance="?android:textAppearanceMedium"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_name"
@@ -69,7 +72,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
-            android:hint="@string/value">
+            android:hint="@string/value"
+            app:hintTextAppearance="?android:textAppearanceMedium"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_value"
@@ -88,7 +94,10 @@
             android:layout_marginTop="@dimen/margin_small"
             android:hint="@string/no_emi"
             android:visibility="gone"
-            tools:visibility="visible">
+            tools:visibility="visible"
+            app:hintTextAppearance="?android:textAppearanceMedium"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_emino"
@@ -128,7 +137,10 @@
             android:layout_marginTop="@dimen/margin_small"
             android:hint="@string/note"
             app:counterEnabled="true"
-            app:counterMaxLength="200">
+            app:counterMaxLength="200"
+            app:hintTextAppearance="?android:textAppearanceMedium"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_desc"

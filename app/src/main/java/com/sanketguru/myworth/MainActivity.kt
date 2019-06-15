@@ -9,7 +9,6 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.sanketguru.myworth.view.SliderFragment
-
 //Dark Theme
 //https://proandroiddev.com/android-dark-theme-implementation-recap-4fcffb0c4bff
 //https://medium.com/mindorks/mastering-android-themes-chapter-4-591e03320182
