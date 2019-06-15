@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.sanketguru.myworth.view.SettingFragment
 import com.sanketguru.myworth.view.SliderFragment
 //Dark Theme
 //https://proandroiddev.com/android-dark-theme-implementation-recap-4fcffb0c4bff
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity(), AppCallBack {
 
              //   AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                // recreate()
-
+addFragment(SettingFragment(),"Setting")
 
                 true
             }
@@ -68,8 +69,32 @@ class MainActivity : AppCompatActivity(), AppCallBack {
         }
     }
     override fun addFragment(fragment: androidx.fragment.app.Fragment, tag: String) {
+//        val fragmentManager = supportFragmentManager
+//        val fragmentTransaction = fragmentManager.beginTransaction()
+//        fragmentTransaction.add(R.id.fragment, fragment)
+//        fragmentTransaction.addToBackStack(tag)
+//        fragmentTransaction.commit()
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+
+        val index = fragmentManager.backStackEntryCount
+        if (index > 1) {
+            try {
+                val entry = fragmentManager.getBackStackEntryAt(index - 1)
+                //Timber.d("Fragment On Top was %s", entry.name)
+                if (entry != null) {
+                    if (entry.name == tag) {
+                        return
+                    }
+                }
+            } catch (e: IndexOutOfBoundsException) {
+             //   Timber.e(e, "addFragment")
+                return
+            }
+        }
+        // }
+
         fragmentTransaction.add(R.id.fragment, fragment)
         fragmentTransaction.addToBackStack(tag)
         fragmentTransaction.commit()
@@ -104,13 +129,7 @@ class MainActivity : AppCompatActivity(), AppCallBack {
             fragmentManager.popBackStack()
             dd--
         }
-//        val fragList = fragmentManager.fragments
-//        for (af in fragList) {
-//            if (af is SliderFragment) {
-//            } else {
-//                fragmentManager.popBackStack()
-//            }
-//        }
+
     }
 
     override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
