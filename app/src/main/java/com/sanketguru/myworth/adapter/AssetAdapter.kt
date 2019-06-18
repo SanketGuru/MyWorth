@@ -1,6 +1,7 @@
 package com.sanketguru.myworth.adapter
 
 import android.view.View
+import androidx.preference.PreferenceManager
 import com.sanketguru.myworth.R
 import com.sanketguru.myworth.data.Asset
 import com.sanketguru.myworth.data.PortFolio
@@ -13,6 +14,8 @@ import java.text.NumberFormat
  * Created by sanket.sphere on 29-11-2018.
  */
 class AssetAdapter constructor(likeList: MutableList<Asset>) : AbstractAdapter<Asset>(likeList, R.layout.item_asset) {
+//   val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this /* Activity context */)
+   // val name = sharedPreferences.getString("signature", "")
  lateinit   var clickLis:onItemClick
     override fun View.bind(position: Int, item: Asset) {
       //  text_no.text = "No.: ${1 + position}"

@@ -5,7 +5,6 @@ import androidx.fragment.app.FragmentPagerAdapter as FragAdapter
 import android.view.View
 import androidx.fragment.app.FragmentManager
 import com.sanketguru.myworth.AppCallBack
-import com.sanketguru.myworth.MyWorthApp
 import com.sanketguru.myworth.R
 import com.sanketguru.myworth.utils.extensions.onClick
 import com.sanketguru.myworth.view.folio.AddEditFolioFragment
@@ -20,9 +19,8 @@ import kotlinx.android.synthetic.main.activity_slider.*
  */
 class SliderFragment : BaseFragment() {
     override val layout: Int = R.layout.activity_slider
-
     lateinit var callBack: AppCallBack
-    lateinit var app: MyWorthApp
+   // lateinit var app: MyWorthApp
     /**
      * The [android.support.v4.view.PagerAdapter] that will provide
      * fragments for each of the sections. We use a
@@ -35,7 +33,7 @@ class SliderFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        app = activity!!.applicationContext as MyWorthApp
+      //  app = activity!!.applicationContext as MyWorthApp
         callBack = activity as AppCallBack
         val lMan = fragmentManager
         if (lMan != null) {
@@ -46,15 +44,10 @@ class SliderFragment : BaseFragment() {
         fab.onClick {
             if (tab.selectedTabPosition == 0) {
                 callBack.addFragment(AddEditFolioFragment(), AddEditFolioFragment.tagTitle)
-
-
             } else {
                 callBack.addFragment(AddEditLiabilityFragment(), AddEditLiabilityFragment.tagTitle)
             }
         }
-
-       // toolbar.title="Balance"
-
 
     }
 
@@ -63,14 +56,13 @@ class SliderFragment : BaseFragment() {
      * one of the sections/tabs/pages.
      */
     inner class SectionsPagerAdapter(fm: FragmentManager) :FragAdapter(fm,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-        override fun getPageTitle(position: Int): CharSequence? = if (position == 0) "Assets" else "Liability"
 
+        override fun getPageTitle(position: Int): CharSequence? = if (position == 0) getString(R.string.asset) else getString(R.string.liability)
 
         override fun getItem(position: Int): androidx.fragment.app.Fragment = if (position == 0)
             PortFolioListFragment()
         else
             LiabilityListFragment()
-
 
         override fun getCount(): Int = 2
     }

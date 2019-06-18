@@ -1,4 +1,4 @@
-package com.sanketguru.myworth.view
+package com.sanketguru.myworth.view.settings
 
 import android.graphics.Color
 import com.sanketguru.myworth.R
@@ -15,15 +15,11 @@ import androidx.preference.PreferenceFragmentCompat
 //basic android
 //https://android.jlelse.eu/learning-android-development-in-2018-part-1-83a514f6a205
 class SettingFragment : PreferenceFragmentCompat()  {
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        view.setBackgroundColor(Color.
-        WHITE)//Todo Dark theme color neds to be set
-
-
-        //context?.let { ContextCompat.getColor(it, com.google.android.material.R.attr.backgroundColor) };
-
-        super.onViewCreated(view, savedInstanceState)
-    }
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        view.setBackgroundColor(Color.
+//        WHITE)//Todo Dark theme color neds to be set
+//        super.onViewCreated(view, savedInstanceState)
+//    }
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.setting_screen, rootKey)
     }

@@ -33,9 +33,6 @@ class PortFolioListFragment : BaseFragment() {
         getData()
 
         callBack = activity as AppCallBack
-//        fab.onClick {
-//            callBack.addFragment(AddEditFolioFragment(), AddEditFolioFragment.tagTitle)
-//        }
         fragmentManager!!.addOnBackStackChangedListener({ getData() })
 
     }
@@ -46,7 +43,6 @@ class PortFolioListFragment : BaseFragment() {
     }
 
     private fun getData() {
-
         val dd = Thread(Runnable {
             if (app != null) {
                 val data = app.db.portfolioDao().loadAllByIdsValueTotal().toMutableList()

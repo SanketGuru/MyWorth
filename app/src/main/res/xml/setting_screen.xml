@@ -15,7 +15,8 @@
   -->
 
 <androidx.preference.PreferenceScreen
-    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
 <!--    <Preference
         app:key="terms"
@@ -31,8 +32,8 @@
         app:summary="@string/mversion"/>
    <EditTextPreference
        app:key="currency"
-       app:title="currency"
-
+       app:title="Currency"
+       app:useSimpleSummaryProvider="true"
        />
 
 </androidx.preference.PreferenceScreen>

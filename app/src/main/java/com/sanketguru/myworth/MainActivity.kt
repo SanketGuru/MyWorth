@@ -1,5 +1,6 @@
 package com.sanketguru.myworth
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -8,8 +9,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.sanketguru.myworth.view.SettingFragment
 import com.sanketguru.myworth.view.SliderFragment
+import com.sanketguru.myworth.view.settings.SettingsActivity
+
 //Dark Theme
 //https://proandroiddev.com/android-dark-theme-implementation-recap-4fcffb0c4bff
 //https://medium.com/mindorks/mastering-android-themes-chapter-4-591e03320182
@@ -23,7 +25,7 @@ class MainActivity : AppCompatActivity(), AppCallBack {
         // setTheme(R.style.Theme_Dark);
 
 
-      //  setTheme(com.google.android.material.R.style.Dark)
+        //  setTheme(com.google.android.material.R.style.Dark)
 
 
         if (savedInstanceState == null) {
@@ -44,10 +46,11 @@ class MainActivity : AppCompatActivity(), AppCallBack {
         return when (item.itemId) {
             R.id.action_settings -> {
 
-             //   AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-               // recreate()
-addFragment(SettingFragment(),"Setting")
-
+                //   AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                // recreate()
+                //   addFragment(SettingFragment(), "Setting")
+                val settingIntent = Intent(this, SettingsActivity::class.java)
+                startActivity(settingIntent)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -68,12 +71,9 @@ addFragment(SettingFragment(),"Setting")
             } // Night mode is active, we're using dark theme
         }
     }
+
     override fun addFragment(fragment: androidx.fragment.app.Fragment, tag: String) {
-//        val fragmentManager = supportFragmentManager
-//        val fragmentTransaction = fragmentManager.beginTransaction()
-//        fragmentTransaction.add(R.id.fragment, fragment)
-//        fragmentTransaction.addToBackStack(tag)
-//        fragmentTransaction.commit()
+
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
@@ -89,7 +89,7 @@ addFragment(SettingFragment(),"Setting")
                     }
                 }
             } catch (e: IndexOutOfBoundsException) {
-             //   Timber.e(e, "addFragment")
+                //   Timber.e(e, "addFragment")
                 return
             }
         }
