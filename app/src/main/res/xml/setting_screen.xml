@@ -32,8 +32,8 @@
         app:summary="@string/mversion"/>
    <EditTextPreference
        app:key="currency"
-       app:title="Currency"
+       app:title="@string/currency"
        app:useSimpleSummaryProvider="true"
        />
-
+    <!---->
 </androidx.preference.PreferenceScreen>

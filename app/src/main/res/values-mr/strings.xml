@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyWorth</string>
+    <string name="liability">उत्तरदायित्व</string>
+    <string name="is_it_a_loan">हे कर्ज आहे का?</string>
+    <string name="asset">मालमत्ता</string>
+    <string name="currency">चलन</string>
+    <string name="delete">हटवा</string>
+    <string name="edit">संपादित करा</string>
+    <string name="exit_app_msg">बाहेर पडायचे?</string>
+    <string name="action_settings">" सेटिंग्ज"</string>
+    <string name="no_emi">ईएमआयची संख्या</string>
+    <string name="name">" नाव"</string>
+    <string name="save">जतन करा</string>
+    <string name="note">" टीप"</string>
+    <string name="value">मूल्य</string>
+    <string name="total">एकूण</string>
+</resources>
