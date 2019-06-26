@@ -1,6 +1,7 @@
 package com.sanketguru.myworth.view.folio
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -57,16 +58,9 @@ class AddEditFolioFragment : BaseFragment(), BackListner {
                             .create().show()
                 }
             }
-//            btn_view.onClick {
-//                //TODO View Port Folio
-//                val data= mParam1
-//                if (data != null) {
-//                    callBack.addFragment(AssetListFragment.newInstance( data),AssetListFragment.tagTitle)
-//                }
-//            }
+
         } else {
             btn_delete.visibility = View.GONE
-         //   btn_view.visibility = View.GONE
         }
     }
 
@@ -89,8 +83,11 @@ class AddEditFolioFragment : BaseFragment(), BackListner {
                     }
                     activity!!.runOnUiThread {
                         val imm = context!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
-//Hide:
                         imm!!.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
+
+                        val data=Intent("CO")
+                        context!!.sendBroadcast(data)
+
                         callBack.goHome()
                     }
 

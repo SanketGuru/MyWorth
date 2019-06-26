@@ -35,5 +35,10 @@
        app:title="@string/currency"
        app:useSimpleSummaryProvider="true"
        />
+
+    <Preference
+        app:key="build"
+        app:title="Build Time"
+        app:summary="@string/build_time"/>
     <!---->
 </androidx.preference.PreferenceScreen>

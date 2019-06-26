@@ -1,6 +1,8 @@
 package com.sanketguru.myworth
 
+import android.content.BroadcastReceiver
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -8,6 +10,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.sanketguru.myworth.view.SliderFragment
 import com.sanketguru.myworth.view.settings.SettingsActivity
@@ -16,23 +19,26 @@ import com.sanketguru.myworth.view.settings.SettingsActivity
 //https://proandroiddev.com/android-dark-theme-implementation-recap-4fcffb0c4bff
 //https://medium.com/mindorks/mastering-android-themes-chapter-4-591e03320182
 class MainActivity : AppCompatActivity(), AppCallBack {
-
+private val commonReceiver:BroadcastReceiver=ActionReceiver()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //   setSupportActionBar(toolbar)
-
-        // setTheme(R.style.Theme_Dark);
-
-
-        //  setTheme(com.google.android.material.R.style.Dark)
-
-
         if (savedInstanceState == null) {
             addFragment(SliderFragment(), SliderFragment.tagTitle)
         }
+      //  registerReceiver(commonReceiver, IntentFilter())
+
     }
 
+    override fun onResume() {
+        LocalBroadcastManager.getInstance(this).registerReceiver(commonReceiver,IntentFilter("CO"))
+        super.onResume()
+    }
+
+    override fun onPause() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(commonReceiver)
+        super.onPause()
+    }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -169,6 +175,8 @@ class MainActivity : AppCompatActivity(), AppCallBack {
             supportFragmentManager.popBackStack()
         }
     }
+
+
 }
 
 interface AppCallBack {

@@ -1,11 +1,13 @@
 package com.sanketguru.myworth.view.asset
 
 import android.app.Activity
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.sanketguru.myworth.AppCallBack
 import com.sanketguru.myworth.MyWorthApp
@@ -104,6 +106,11 @@ class AddEditAssetFragment : BaseFragment() {
                     val imm = context!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
                     //Hide:
                     imm!!.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
+
+                    val data= Intent("CO")
+                    data.putExtra("data","Asset edit")
+                    context!!.sendBroadcast(data)
+LocalBroadcastManager.getInstance(context!!).sendBroadcast(data)
                     callBack.popFragmentAt(tagTitle)
                 }
             })
@@ -132,20 +139,6 @@ class AddEditAssetFragment : BaseFragment() {
 
     }
 
-
-//    override fun onAttach(context: Context?) {
-//        super.onAttach(context)
-//        if (context is AppCallBack) {
-//            callBack = context
-//        } else {
-//            //    throw RuntimeException(context!!.toString() + " must implement OnFragmentInteractionListener")
-//        }
-//    }
-
-//    override fun onDetach() {
-//        super.onDetach()
-//
-//    }
 
     /**
      * This interface must be implemented by activities that contain this

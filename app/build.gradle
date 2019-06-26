@@ -23,6 +23,8 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         resValue "string", "mversion", "${defaultConfig.versionName}"
+        buildConfigField("String", "BUILD_TIME", "\"${getBuildDate()}\"")
+        resValue("string", "build_time", "${getBuildDate()}")
     }
     buildTypes {
         release {

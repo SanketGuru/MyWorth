@@ -10,9 +10,9 @@
     <string name="exit_app_msg">बाहेर पडायचे?</string>
     <string name="action_settings">" सेटिंग्ज"</string>
     <string name="no_emi">ईएमआयची संख्या</string>
-    <string name="name">" नाव"</string>
+    <string name="name">"नाव"</string>
     <string name="save">जतन करा</string>
-    <string name="note">" टीप"</string>
+    <string name="note">"टीप"</string>
     <string name="value">मूल्य</string>
     <string name="total">एकूण</string>
 </resources>
