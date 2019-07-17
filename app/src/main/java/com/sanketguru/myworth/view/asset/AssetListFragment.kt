@@ -10,6 +10,7 @@ import com.sanketguru.myworth.adapter.AssetAdapter
 import com.sanketguru.myworth.adapter.onItemClick
 import com.sanketguru.myworth.data.Asset
 import com.sanketguru.myworth.data.PortFolio
+import com.sanketguru.myworth.utils.extensions.Config.getCurrency
 import com.sanketguru.myworth.utils.extensions.onClick
 import com.sanketguru.myworth.view.BaseFragment
 import com.sanketguru.myworth.view.folio.AddEditFolioFragment
@@ -22,7 +23,7 @@ import java.text.NumberFormat
 class AssetListFragment : BaseFragment() {
 
 
-    var assetAdapter = AssetAdapter(mutableListOf<Asset>())
+    var assetAdapter = AssetAdapter(mutableListOf<Asset>(), "")
     private val mLayoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity)
     lateinit var callBack: AppCallBack
     override val layout: Int = R.layout.fragment_main
@@ -78,11 +79,11 @@ class AssetListFragment : BaseFragment() {
     }
 
     private fun displayData(likeList: MutableList<Asset>) {
-        assetAdapter = AssetAdapter(likeList)
+        assetAdapter = AssetAdapter(likeList,getCurrency(activity))
         list_asset.adapter = assetAdapter
 
 
-        text_total.text = "Total ₹ ${numberFormater.format(assetAdapter.totalValue())}"
+        text_total.text = "Total ${getCurrency(activity)} ${numberFormater.format(assetAdapter.totalValue())}"
 
         assetAdapter.clickLis = object : onItemClick {
             override fun itemClicked(asset: Asset) {
