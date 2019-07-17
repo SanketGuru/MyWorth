@@ -17,7 +17,7 @@ import androidx.preference.PreferenceFragmentCompat
 class SettingFragment : PreferenceFragmentCompat()  {
 //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 //        view.setBackgroundColor(Color.
-//        WHITE)//Todo Dark theme color neds to be set
+//        WHITE)//Todo Dark theme color needs to be set
 //        super.onViewCreated(view, savedInstanceState)
 //    }
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {

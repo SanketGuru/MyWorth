@@ -6,15 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    signingConfigs {
-        config {
-            keyAlias 'myKey'
-            keyPassword 'Sk@2019'
-            storeFile file('C:/Users/sanket.sphere/Desktop/GetInTouch/myKey.jks')
-            storePassword 'Sk@2019'
-        }
-    }
-    compileSdkVersion 28
+
+  compileSdkVersion 28
     defaultConfig {
         applicationId "com.sanketguru.myworth"
         minSdkVersion 21
