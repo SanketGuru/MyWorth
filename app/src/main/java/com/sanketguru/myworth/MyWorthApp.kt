@@ -10,23 +10,15 @@ import com.sanketguru.myworth.data.AppDatabase
  */
 
 class MyWorthApp : Application() {
-     val dataBaseName="databaseName"
-  lateinit var  db:AppDatabase
+    private val dataBaseName = "databaseName"
+    lateinit var db: AppDatabase
     override fun onCreate() {
         super.onCreate()
-         db = Room.databaseBuilder(
-                applicationContext,
-                AppDatabase::class.java, dataBaseName
-        ).build()
-
-
-                //    component.inject(this)
-//        if (BuildConfig.DEBUG) {
-//            Timber.plant(Timber.DebugTree())
-//        }
-     //   component.inject(this)
-
+        db = getDataBase()
     }
 
-
+    private fun getDataBase():AppDatabase = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java, dataBaseName
+    ).build()
 }

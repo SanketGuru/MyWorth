@@ -1,21 +1,13 @@
 package com.sanketguru.myworth;
 
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintManager;
-import android.content.Context;
+import android.view.View;
+import android.webkit.WebView;
 
 /**
  * Created by sanket.sphere on 17-12-2018.
@@ -30,8 +22,7 @@ public class HTMLPrintActivity extends Activity {
         setContentView(R.layout.html);
 
 
-
-        myWebView= new WebView(this);
+        myWebView = new WebView(this);
 
 
         String htmlDocument =
@@ -268,18 +259,20 @@ public class HTMLPrintActivity extends Activity {
         PrintManager printManager = (PrintManager) this
                 .getSystemService(Context.PRINT_SERVICE);
 
-        PrintDocumentAdapter printAdapter =null;
-if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+        PrintDocumentAdapter printAdapter = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
 
-    printAdapter= webView.createPrintDocumentAdapter("Cool");
-}
-else{
-    printAdapter=webView.createPrintDocumentAdapter();
-}
+            printAdapter = webView.createPrintDocumentAdapter("Cool");
+        } else {
+            printAdapter = webView.createPrintDocumentAdapter();
+        }
         String jobName = getString(R.string.app_name) + " Print Test";
 
         printManager.print(jobName, printAdapter,
                 new PrintAttributes.Builder().build());
     }
-public void mPrint(View v){createWebPrintJob(myWebView);}
+
+    public void mPrint(View v) {
+        createWebPrintJob(myWebView);
+    }
 }
