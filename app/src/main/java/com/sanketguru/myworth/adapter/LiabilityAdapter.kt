@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.item_liabilyty.view.*
 /**
  * Created by sanket.sphere on 31-12-2018.
  */
-class LiabilityAdapter constructor(likeList: MutableList<Liability>) : AbstractAdapter<Liability>(likeList, R.layout.item_liabilyty) {
+class LiabilityAdapter constructor(likeList: MutableList<Liability>,private val currency :String) : AbstractAdapter<Liability>(likeList, R.layout.item_liabilyty) {
     lateinit   var clickLis:onLiabilytyClick
     override fun View.bind(position: Int, item: Liability) {
         //  text_no.text = "No.: ${1 + position}"
@@ -26,7 +26,7 @@ class LiabilityAdapter constructor(likeList: MutableList<Liability>) : AbstractA
         } else {
             text_emi.visibility = View.GONE
         }
-        text_value.text = "₹ ${numberFormater.format(item.value())}"
+        text_value.text = "${currency} ${numberFormater.format(item.value())}"
         text_percent.text = "${"%.2f".format(getPercent(item.value()))} %"
     }
 

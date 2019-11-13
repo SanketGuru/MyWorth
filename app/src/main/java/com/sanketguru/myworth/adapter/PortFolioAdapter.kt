@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.item_asset.view.*
 /**
  * Created by sanket.sphere on 31-12-2018.
  */
-class PortFolioAdapter constructor(likeList: MutableList<PortFolioValue>) : AbstractAdapter<PortFolioValue>(likeList, R.layout.item_asset) {
+class PortFolioAdapter constructor(likeList: MutableList<PortFolioValue>, private val currency:String) : AbstractAdapter<PortFolioValue>(likeList, R.layout.item_asset) {
     lateinit   var clickLis:onPortfolioClick
     override fun View.bind(position: Int, item: PortFolioValue) {
         //  text_no.text = "No.: ${1 + position}"
@@ -20,7 +20,7 @@ class PortFolioAdapter constructor(likeList: MutableList<PortFolioValue>) : Abst
         } else {
             text_desc.visibility = View.GONE
         }
-        text_value.text = "₹ ${numberFormater.format(item.value)}"
+        text_value.text = "$currency ${numberFormater.format(item.value)}"
         text_percent.text = "${"%.2f".format(getPercent(item.value))} %"
     }
 

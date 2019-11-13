@@ -10,7 +10,7 @@ import com.sanketguru.myworth.adapter.PortFolioAdapter
 import com.sanketguru.myworth.adapter.onPortfolioClick
 import com.sanketguru.myworth.data.PortFolio
 import com.sanketguru.myworth.data.PortFolioValue
-import com.sanketguru.myworth.utils.extensions.onClick
+import com.sanketguru.myworth.utils.extensions.Config.getCurrency
 import com.sanketguru.myworth.view.BaseFragment
 import com.sanketguru.myworth.view.asset.AssetListFragment
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -21,11 +21,12 @@ import java.text.NumberFormat
  */
 class PortFolioListFragment : BaseFragment() {
     override val layout: Int = R.layout.fragment_portfolio_list
-    private var assetAdapter = PortFolioAdapter(mutableListOf<PortFolioValue>())
+    private var assetAdapter = PortFolioAdapter(mutableListOf<PortFolioValue>(),"")
     private val mLayoutManager = LinearLayoutManager(activity)
     lateinit var callBack: AppCallBack
     lateinit var app: MyWorthApp
     private  val numberFormater= NumberFormat.getNumberInstance()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         list_asset.layoutManager = mLayoutManager
@@ -33,7 +34,7 @@ class PortFolioListFragment : BaseFragment() {
         getData()
 
         callBack = activity as AppCallBack
-        fragmentManager!!.addOnBackStackChangedListener({ getData() })
+        fragmentManager!!.addOnBackStackChangedListener { getData() }
 
     }
 
@@ -54,9 +55,9 @@ class PortFolioListFragment : BaseFragment() {
     }
 
     private fun displayData(likeList: MutableList<PortFolioValue>) {
-        assetAdapter = PortFolioAdapter(likeList)
+        assetAdapter = PortFolioAdapter(likeList, getCurrency(activity))
         list_asset.adapter = assetAdapter
-        text_total.text =  "Total ₹ ${ numberFormater.format(assetAdapter.totalValue())}"
+        text_total.text =  "Total ${getCurrency(activity)} ${ numberFormater.format(assetAdapter.totalValue())}"
 
         assetAdapter.clickLis = object : onPortfolioClick {
             override fun itemClicked(folio: PortFolio) {
@@ -64,6 +65,8 @@ class PortFolioListFragment : BaseFragment() {
             }
         }
     }
+
+
 
     companion object {
         const val tagTitle = "PortFolioList"
