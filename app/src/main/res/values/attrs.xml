@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BorderCard">
+        <attr name="borderCardColor" format="color"/>
+        <attr name="borderCardWidth" format="dimension"/>
+
+    </declare-styleable>
+</resources>

@@ -15,8 +15,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:orientation="vertical">
 
         <TextView
@@ -36,17 +36,18 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:textAppearanceMedium"
             android:textStyle="bold"
-            app:layout_constraintBaseline_toBaselineOf="@+id/text_percent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_name"
             tools:text="Value" />
 
         <TextView
             android:id="@+id/text_percent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:textAppearance="?android:textAppearanceSmall"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_value"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_name"
             tools:text="0%" />
 
         <TextView
