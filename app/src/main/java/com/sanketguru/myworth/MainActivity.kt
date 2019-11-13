@@ -10,7 +10,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
+//import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.sanketguru.myworth.view.SliderFragment
 import com.sanketguru.myworth.view.settings.SettingsActivity
@@ -31,12 +31,12 @@ private val commonReceiver:BroadcastReceiver=ActionReceiver()
     }
 
     override fun onResume() {
-        LocalBroadcastManager.getInstance(this).registerReceiver(commonReceiver,IntentFilter("CO"))
+       // LocalBroadcastManager.getInstance(this).registerReceiver(commonReceiver,IntentFilter("CO"))
         super.onResume()
     }
 
     override fun onPause() {
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(commonReceiver)
+     //   LocalBroadcastManager.getInstance(this).unregisterReceiver(commonReceiver)
         super.onPause()
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -7,7 +7,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
+//import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.sanketguru.myworth.AppCallBack
 import com.sanketguru.myworth.MyWorthApp
@@ -16,6 +16,7 @@ import com.sanketguru.myworth.data.Asset
 import com.sanketguru.myworth.utils.extensions.onClick
 import com.sanketguru.myworth.view.BaseFragment
 import kotlinx.android.synthetic.main.fragment_add_edit_asset.*
+
 
 
 /**
@@ -46,6 +47,7 @@ class AddEditAssetFragment : BaseFragment() {
             }
             //      mParam2 = arguments!!.getString(ARG_PARAM2)
         }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -110,7 +112,7 @@ class AddEditAssetFragment : BaseFragment() {
                     val data= Intent("CO")
                     data.putExtra("data","Asset edit")
                     context!!.sendBroadcast(data)
-LocalBroadcastManager.getInstance(context!!).sendBroadcast(data)
+//LocalBroadcastManager.getInstance(context!!).sendBroadcast(data)
                     callBack.popFragmentAt(tagTitle)
                 }
             })
