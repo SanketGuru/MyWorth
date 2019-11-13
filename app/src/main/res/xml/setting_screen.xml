@@ -26,16 +26,19 @@
             android:data="@string/aboutlink"/>
     </Preference>-->
 
+    <EditTextPreference
+        app:key="currency"
+        app:title="@string/currency"
+        app:useSimpleSummaryProvider="true"
+        />
+    <SwitchPreferenceCompat
+        app:key="theme"
+        app:title="Enable Dark Theme"/>
+
     <Preference
         app:key="version"
         app:title="Application version"
         app:summary="@string/mversion"/>
-   <EditTextPreference
-       app:key="currency"
-       app:title="@string/currency"
-       app:useSimpleSummaryProvider="true"
-       />
-
     <Preference
         app:key="build"
         app:title="Build Time"

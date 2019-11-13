@@ -10,7 +10,9 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.sanketguru.myworth.utils.extensions.Config
 import com.sanketguru.myworth.view.SliderFragment
 import com.sanketguru.myworth.view.settings.SettingsActivity
 
@@ -21,6 +23,7 @@ class MainActivity : AppCompatActivity(), AppCallBack {
     private val commonReceiver: BroadcastReceiver = ActionReceiver()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setUpTheme()
         setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
             addFragment(SliderFragment(), SliderFragment.tagTitle)
@@ -29,6 +32,16 @@ class MainActivity : AppCompatActivity(), AppCallBack {
 
     }
 
+    private fun setUpTheme() {
+        AppCompatDelegate
+                .setDefaultNightMode(
+                        Config.getMode(Config.getSavedMode(this))
+                )
+//        if (AppCompatDelegate.getDefaultNightMode()
+//                ==AppCompatDelegate.MODE_NIGHT_YES) {
+//            setTheme(R.style.AppThemeDark)
+//        }else{}
+    }
     override fun onResume() {
         // LocalBroadcastManager.getInstance(this).registerReceiver(commonReceiver,IntentFilter("CO"))
         super.onResume()
@@ -52,8 +65,6 @@ class MainActivity : AppCompatActivity(), AppCallBack {
         return when (item.itemId) {
             R.id.action_settings -> {
 
-                //   AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                // recreate()
                 //   addFragment(SettingFragment(), "Setting")
                 val settingIntent = Intent(this, SettingsActivity::class.java)
                 startActivity(settingIntent)
@@ -65,15 +76,16 @@ class MainActivity : AppCompatActivity(), AppCallBack {
 
     override fun onConfigurationChanged(configuration: Configuration) {
         super.onConfigurationChanged(configuration)
-
+        //   Log.v("Say", "Current ${configuration.uiMode} : ${Configuration.UI_MODE_NIGHT_MASK} : ${configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK}")
         val currentNightMode = configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         when (currentNightMode) {
             Configuration.UI_MODE_NIGHT_NO -> {
-                Log.v("Say", "Light")
-
+                       Log.v("Say", "Light")
+                recreate()
             } // Night mode is not active, we're using the light theme
             Configuration.UI_MODE_NIGHT_YES -> {
-                Log.v("Say", "Dark")
+                       Log.v("Say", "Dark")
+                recreate()
             } // Night mode is active, we're using dark theme
         }
     }

@@ -1,13 +1,15 @@
 package com.sanketguru.myworth.view.settings
 
-import com.sanketguru.myworth.R
 import android.os.Bundle
 import android.text.InputFilter
-import androidx.preference.PreferenceFragmentCompat
+import android.util.Log
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.EditTextPreference
-
-
-
+import androidx.preference.Preference
+import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreferenceCompat
+import com.sanketguru.myworth.R
+import com.sanketguru.myworth.utils.extensions.Config.getMode
 
 
 //https://medium.com/over-engineering/setting-up-a-material-components-theme-for-android-fbf7774da739
@@ -42,12 +44,31 @@ class SettingFragment : PreferenceFragmentCompat()  {
         else{
          //   Toast.makeText(context,"No Found",Toast.LENGTH_LONG).show()
         }
-//        (editTextPreference as EditTextPreference ).editText.filters = arrayOf(
-//                InputFilter.LengthFilter(3)
-//        )
-               // { InputFilter.LengthFilter(3)}
+
+        val switchThemeTextPreference = preferenceManager.findPreference<SwitchPreferenceCompat>("theme")
+        if (switchThemeTextPreference != null) {
+//            switchThemeTextPreference.switchTextOff="Dark"
+//            switchThemeTextPreference.switchTextOn="Light"
+            switchThemeTextPreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference, newValue ->
+                if (preference.key.contentEquals("theme")) {
+                //    Log.v("Say", "preference : ${newValue}")
+                    if (newValue is Boolean) {
+                        AppCompatDelegate
+                                .setDefaultNightMode(
+                                        getMode(newValue)
+                                )
+                    }
+                    //   AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    activity?.recreate()
+                }
+
+                true
+            }
+        }
     }
 
     }
+
+
 
 }
