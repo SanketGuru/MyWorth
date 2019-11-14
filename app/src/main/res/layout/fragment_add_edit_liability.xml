@@ -40,7 +40,7 @@
 
         </LinearLayout>
 
-        <Switch
+        <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/sw_enable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -122,7 +122,7 @@
 
             />
 
-        <Switch
+        <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/sw_emi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
