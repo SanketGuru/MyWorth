@@ -65,13 +65,15 @@ class LiabilityListFragment : BaseFragment() {
     }
 
     private fun displayData(likeList: MutableList<Liability>) {
-        assetAdapter = LiabilityAdapter(likeList, getCurrency(activity))
-        list_asset.adapter = assetAdapter
-        text_total.text = "Total ${getCurrency(activity)} ${numberFormater.format(assetAdapter.totalValue())}"
+        if (list_asset != null) {
+            assetAdapter = LiabilityAdapter(likeList, getCurrency(activity))
+            list_asset.adapter = assetAdapter
+            text_total.text = "Total ${getCurrency(activity)} ${numberFormater.format(assetAdapter.totalValue())}"
 
-        assetAdapter.clickLis = object : onLiabilytyClick {
-            override fun itemClicked(folio: Liability) {
-                callBack.addFragment(AddEditLiabilityFragment.newInstance(folio), AddEditLiabilityFragment.tagTitle)
+            assetAdapter.clickLis = object : onLiabilytyClick {
+                override fun itemClicked(folio: Liability) {
+                    callBack.addFragment(AddEditLiabilityFragment.newInstance(folio), AddEditLiabilityFragment.tagTitle)
+                }
             }
         }
     }

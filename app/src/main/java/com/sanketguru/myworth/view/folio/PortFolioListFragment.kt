@@ -55,15 +55,18 @@ class PortFolioListFragment : BaseFragment() {
     }
 
     private fun displayData(likeList: MutableList<PortFolioValue>) {
-        assetAdapter = PortFolioAdapter(likeList, getCurrency(activity))
-        list_asset.adapter = assetAdapter
-        text_total.text =  "Total ${getCurrency(activity)} ${ numberFormater.format(assetAdapter.totalValue())}"
+        if (list_asset != null) {
+            assetAdapter = PortFolioAdapter(likeList, getCurrency(activity))
+            list_asset.adapter = assetAdapter
+            text_total.text =  "Total ${getCurrency(activity)} ${ numberFormater.format(assetAdapter.totalValue())}"
 
-        assetAdapter.clickLis = object : onPortfolioClick {
-            override fun itemClicked(folio: PortFolio) {
-                callBack.addFragment(AssetListFragment.newInstance(folio), AssetListFragment.tagTitle)
+            assetAdapter.clickLis = object : onPortfolioClick {
+                override fun itemClicked(folio: PortFolio) {
+                    callBack.addFragment(AssetListFragment.newInstance(folio), AssetListFragment.tagTitle)
+                }
             }
         }
+
     }
 
 
