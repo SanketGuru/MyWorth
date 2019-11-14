@@ -1,13 +1,13 @@
 package com.sanketguru.myworth.view.asset
 
+//import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-//import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.sanketguru.myworth.AppCallBack
 import com.sanketguru.myworth.MyWorthApp
@@ -16,7 +16,6 @@ import com.sanketguru.myworth.data.Asset
 import com.sanketguru.myworth.utils.extensions.onClick
 import com.sanketguru.myworth.view.BaseFragment
 import kotlinx.android.synthetic.main.fragment_add_edit_asset.*
-
 
 
 /**
@@ -95,7 +94,7 @@ class AddEditAssetFragment : BaseFragment() {
                     if (editMode) mParam1!!.uid else 0,
                     edit_name.text.toString().trim(),
                     edit_desc.text.toString().trim(),
-                    value = if (value.length < 1) 0.0 else value.toDouble(),
+                    value = if (value.isEmpty()) 0.0 else value.toDouble(),
                     portFolioId = folioId)
             val appData = activity!!.application as MyWorthApp
             val thread = Thread(Runnable {

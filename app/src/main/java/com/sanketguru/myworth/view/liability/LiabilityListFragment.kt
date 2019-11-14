@@ -1,8 +1,6 @@
 package com.sanketguru.myworth.view.liability
 
-import android.content.Context
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import com.sanketguru.myworth.AppCallBack
 import com.sanketguru.myworth.MyWorthApp
@@ -11,7 +9,6 @@ import com.sanketguru.myworth.adapter.LiabilityAdapter
 import com.sanketguru.myworth.adapter.onLiabilytyClick
 import com.sanketguru.myworth.data.Liability
 import com.sanketguru.myworth.utils.extensions.Config.getCurrency
-import com.sanketguru.myworth.utils.extensions.onClick
 import com.sanketguru.myworth.view.BaseFragment
 import kotlinx.android.synthetic.main.fragment_portfolio_list.*
 import java.text.NumberFormat
