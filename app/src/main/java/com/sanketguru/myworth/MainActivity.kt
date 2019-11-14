@@ -33,24 +33,22 @@ class MainActivity : AppCompatActivity(), AppCallBack {
     }
 
     private fun setUpTheme() {
-        AppCompatDelegate
-                .setDefaultNightMode(
-                        Config.getMode(Config.getSavedMode(this))
-                )
-//        if (AppCompatDelegate.getDefaultNightMode()
-//                ==AppCompatDelegate.MODE_NIGHT_YES) {
-//            setTheme(R.style.AppThemeDark)
-//        }else{}
-    }
-    override fun onResume() {
-        // LocalBroadcastManager.getInstance(this).registerReceiver(commonReceiver,IntentFilter("CO"))
-        super.onResume()
+//        AppCompatDelegate
+//                .setDefaultNightMode(
+//                        Config.getMode(Config.getSavedMode(this))
+//                )
+
+        if (Config.getSavedMode(this)) {
+            if (AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_YES) {
+                AppCompatDelegate
+                        .setDefaultNightMode(
+                                Config.getMode(true)
+                        )
+                recreate()
+            }
+        }
     }
 
-    override fun onPause() {
-        //   LocalBroadcastManager.getInstance(this).unregisterReceiver(commonReceiver)
-        super.onPause()
-    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -151,14 +149,14 @@ class MainActivity : AppCompatActivity(), AppCallBack {
     }
 
     override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
-        outPersistentState?.putString("say", "123")
+        // outPersistentState?.putString("say", "123")
         super.onSaveInstanceState(outState, outPersistentState)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onRestoreInstanceState(savedInstanceState, persistentState)
         if (persistentState != null) {
-            Log.v("Say", persistentState.getString("say"))
+            //      Log.v("Say", persistentState.getString("say"))
         }
     }
 
