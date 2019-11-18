@@ -49,6 +49,12 @@ dependencies {
     // Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
 
+    def stetho_version = '1.5.1'
+    implementation "com.facebook.stetho:stetho:$stetho_version"
+
+    implementation "com.facebook.stetho:stetho-okhttp:$stetho_version"
+
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
