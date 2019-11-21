@@ -2,6 +2,7 @@ package com.sanketguru.myworth.view.asset
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sanketguru.myworth.AppCallBack
 import com.sanketguru.myworth.MyWorthApp
@@ -16,7 +17,6 @@ import com.sanketguru.myworth.view.BaseFragment
 import com.sanketguru.myworth.view.folio.AddEditFolioFragment
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.text.NumberFormat
@@ -83,11 +83,13 @@ class AssetListFragment : BaseFragment() {
         }
         */
         //------------------------[This Is new Coroutine implementation]
-        GlobalScope.launch {
+
+        //  GlobalScope.launch
+        lifecycleScope.launch {
             val data = getAsset()
-            withContext(Dispatchers.Main) {
+            //  withContext(Dispatchers.Main) {
                 displayData(data)
-            }
+            //  }
         }
 
     }
@@ -146,4 +148,5 @@ class AssetListFragment : BaseFragment() {
 
 
 }
+//class  AssetListViewModel:ViewModel(){}
 
