@@ -54,6 +54,10 @@ dependencies {
 
     implementation "com.facebook.stetho:stetho-okhttp:$stetho_version"
 
+def coroutines_android_version ='1.2.1'
+
+    implementation  "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_android_version"
+    implementation  "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'

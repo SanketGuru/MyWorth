@@ -1,7 +1,6 @@
 package com.sanketguru.myworth
 
 //import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import android.content.BroadcastReceiver
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -20,7 +19,7 @@ import com.sanketguru.myworth.view.settings.SettingsActivity
 //https://proandroiddev.com/android-dark-theme-implementation-recap-4fcffb0c4bff
 //https://medium.com/mindorks/mastering-android-themes-chapter-4-591e03320182
 class MainActivity : AppCompatActivity(), AppCallBack {
-    private val commonReceiver: BroadcastReceiver = ActionReceiver()
+    //  private val commonReceiver: BroadcastReceiver = ActionReceiver()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setUpTheme()

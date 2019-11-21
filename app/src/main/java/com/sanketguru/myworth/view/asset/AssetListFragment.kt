@@ -15,6 +15,10 @@ import com.sanketguru.myworth.utils.extensions.onClick
 import com.sanketguru.myworth.view.BaseFragment
 import com.sanketguru.myworth.view.folio.AddEditFolioFragment
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.NumberFormat
 
 /**
@@ -56,7 +60,7 @@ class AssetListFragment : BaseFragment() {
         fab.onClick {
             callBack.addFragment(AddEditAssetFragment.newInstance(portFolio.uid), AddEditAssetFragment.tagTitle)
         }
-        fragmentManager!!.addOnBackStackChangedListener({ getData() })
+        fragmentManager!!.addOnBackStackChangedListener { getData() }
     }
 
     override fun onResume() {
@@ -66,7 +70,9 @@ class AssetListFragment : BaseFragment() {
 
 
     private fun getData() {
-        val ddAc = activity
+        //------------------------[This Is Previous Thread implementation]
+/*
+      val ddAc = activity
         if (ddAc != null) {
             val app = ddAc.applicationContext as MyWorthApp
             val dd = Thread(Runnable {
@@ -75,10 +81,35 @@ class AssetListFragment : BaseFragment() {
             })
             dd.start()
         }
+        */
+        //------------------------[This Is new Coroutine implementation]
+        GlobalScope.launch {
+            val data = getAsset()
+            withContext(Dispatchers.Main) {
+                displayData(data)
+            }
+        }
 
     }
 
+    private suspend fun getAsset(): MutableList<Asset> {
+        val ddAc = activity
+        if (ddAc != null) {
+
+            val app = ddAc.applicationContext as MyWorthApp
+            return withContext(Dispatchers.IO) {
+                return@withContext app.db.assetDao().getAssetInPortFolio(portFolio.uid).toMutableList()
+            }
+        } else {
+            return mutableListOf()
+        }
+    }
+
     private fun displayData(likeList: MutableList<Asset>) {
+        if (list_asset == null) {
+            return
+        }
+
         assetAdapter = AssetAdapter(likeList,getCurrency(activity))
         list_asset.adapter = assetAdapter
 
